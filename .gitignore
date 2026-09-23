@@ -1,0 +1,60 @@
+# ==============================
+# Java / Spring Boot
+# ==============================
+**/target/
+*.class
+*.jar
+*.war
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Spring / local environment files
+.env
+.env.*
+!.env.example
+
+# Runtime uploaded files
+multivendor-ecommerce/uploads/*
+!multivendor-ecommerce/uploads/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# ==============================
+# Flutter / Dart
+# ==============================
+multivendor_app/.dart_tool/
+multivendor_app/build/
+multivendor_app/.flutter-plugins
+multivendor_app/.flutter-plugins-dependencies
+multivendor_app/.packages
+multivendor_app/.pub-cache/
+multivendor_app/.idea/
+multivendor_app/*.iml
+
+# Flutter generated files
+multivendor_app/android/.gradle/
+multivendor_app/android/local.properties
+
+# Android generated files
+multivendor_app/android/app/build/
+multivendor_app/android/build/
+
+# ==============================
+# OS files
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# Editor / temporary files
+# ==============================
+*.swp
+*.swo
+*~

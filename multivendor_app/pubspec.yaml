@@ -1,0 +1,47 @@
+name: multivendor_app
+description: "Multi-vendor E-Commerce — Flutter client for the Spring Boot backend"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # State management
+  provider: ^6.1.2
+
+  # Networking
+  dio: ^5.4.3+1
+
+  # Secure token storage
+  flutter_secure_storage: ^9.2.2
+
+  # Fonts / design
+  google_fonts: ^6.2.1
+
+  # Formatting (currency, dates)
+  intl: ^0.19.0
+
+  # Picking photos for products / profile pictures
+  image_picker: ^1.1.2
+
+  # Rendering uploaded product/profile photos from the backend
+  cached_network_image: ^3.4.1
+
+  # Launching external/in-app browser for Google OAuth
+  url_launcher: ^6.3.0
+
+  # Google Sign-In SDK for Android / iOS / Web
+  google_sign_in: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
