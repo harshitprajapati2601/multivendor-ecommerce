@@ -13,7 +13,7 @@ and image uploads.
 ``` text
 ┌──────────────────────────────┐
 │       Flutter Frontend       │
-│       Android / iOS / Web    │
+│            Android  
 └──────────────┬───────────────┘
                │ REST API / JSON
                ▼
@@ -121,8 +121,6 @@ filesystem under `uploads/`.
 
 -   Git
 -   GitHub
--   Docker / Docker Compose configuration is included as an optional
-    setup
 -   Swagger / OpenAPI
 
 ## Repository Structure
