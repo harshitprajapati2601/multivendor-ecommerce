@@ -56,6 +56,7 @@ class AuthProvider extends ChangeNotifier {
       userProfile = profile;
       fullName = profile.fullName;
       profileImageUrl = profile.profileImageUrl;
+      await SecureStorage.instance.updateFullName(profile.fullName);
       notifyListeners();
     } catch (_) {
       // Non-fatal - keep showing cached name/initials.
@@ -81,6 +82,7 @@ class AuthProvider extends ChangeNotifier {
       userProfile = profile;
       this.fullName = profile.fullName;
       profileImageUrl = profile.profileImageUrl;
+      await SecureStorage.instance.updateFullName(profile.fullName);
       isLoading = false;
       notifyListeners();
       return true;

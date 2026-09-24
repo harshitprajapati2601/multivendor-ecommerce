@@ -37,7 +37,17 @@ public class AccountService {
             user.setFullName(request.getFullName().trim());
         }
         if (request.getPhoneNumber() != null) {
-            user.setPhoneNumber(request.getPhoneNumber().trim());
+            String phone = request.getPhoneNumber().trim();
+            if (phone.isEmpty()) {
+                user.setPhoneNumber(null);
+            } else {
+                userRepository.findByPhoneNumber(phone).ifPresent(other -> {
+                    if (!other.getId().equals(user.getId())) {
+                        throw new IllegalArgumentException("This phone number is already registered to another account");
+                    }
+                });
+                user.setPhoneNumber(phone);
+            }
         }
 
         userRepository.save(user);

@@ -9,9 +9,24 @@ import '../widgets/edit_profile_sheet.dart';
 import '../widgets/logout_dialog.dart';
 import '../widgets/primary_button.dart';
 
-class AccountScreen extends StatelessWidget {
+class AccountScreen extends StatefulWidget {
   final String subtitle;
   const AccountScreen({super.key, required this.subtitle});
+
+  @override
+  State<AccountScreen> createState() => _AccountScreenState();
+}
+
+class _AccountScreenState extends State<AccountScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<AuthProvider>().loadProfile();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +64,7 @@ class AccountScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            profile?.fullName ?? auth.fullName ?? subtitle,
+                            profile?.fullName ?? auth.fullName ?? widget.subtitle,
                             style: theme.textTheme.titleLarge,
                           ),
                           const SizedBox(height: 2),

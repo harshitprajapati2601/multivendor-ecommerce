@@ -46,6 +46,10 @@ class SecureStorage {
     ]);
   }
 
+  Future<void> updateFullName(String fullName) async {
+    await _storage.write(key: StorageKeys.userFullName, value: fullName);
+  }
+
   Future<String?> getAccessToken() async {
     return _cachedAccessToken ??= await _storage.read(key: StorageKeys.accessToken);
   }

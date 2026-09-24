@@ -78,7 +78,8 @@ class ApiClient {
               error.type == DioExceptionType.sendTimeout ||
               error.type == DioExceptionType.receiveTimeout;
 
-          final isSafeToRetry = requestOptions.method.toUpperCase() == 'GET';
+          final isAuthEndpoint = requestOptions.path.contains('/auth/');
+          final isSafeToRetry = requestOptions.method.toUpperCase() == 'GET' || isAuthEndpoint;
 
           if (isConnErr && isSafeToRetry && requestOptions.extra['hostRetried'] != true) {
             requestOptions.extra['hostRetried'] = true;
@@ -96,9 +97,6 @@ class ApiClient {
               }
             }
           } else if (isConnErr && requestOptions.extra['hostRetried'] != true) {
-            // Non-GET (POST/PUT/DELETE): don't silently resend a mutating
-            // request. Just switch the base URL for future calls so the
-            // user's *next* manual tap goes to the right host.
             requestOptions.extra['hostRetried'] = true;
             final workingHost = await _discoverWorkingBaseUrl();
             if (workingHost != null) {
@@ -106,8 +104,6 @@ class ApiClient {
               _dio.options.baseUrl = workingHost;
             }
           }
-
-          final isAuthEndpoint = requestOptions.path.contains('/auth/');
 
           if (status == 401 && !isAuthEndpoint && requestOptions.extra['retried'] != true) {
             final refreshed = await _refreshTokens();

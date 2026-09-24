@@ -126,13 +126,8 @@ public class ProductService {
     public void deleteProduct(Long id) {
         Product product = getProductOrThrow(id);
         assertOwnership(product);
-        try {
-            inventoryRepository.findByProductId(id).ifPresent(inventoryRepository::delete);
-            productRepository.delete(product);
-        } catch (Exception ex) {
-            product.setActive(false);
-            productRepository.save(product);
-        }
+        product.setActive(false);
+        productRepository.save(product);
     }
 
     @Transactional

@@ -54,9 +54,10 @@ class _EditProfileSheetState extends State<EditProfileSheet> {
     final auth = context.read<AuthProvider>();
     final isSeller = auth.role == UserRole.seller;
 
+    final phoneText = _phoneController.text.trim();
     final success = await auth.updateProfile(
       fullName: _nameController.text.trim(),
-      phoneNumber: _phoneController.text.trim(),
+      phoneNumber: phoneText.isEmpty ? null : phoneText,
       shopName: isSeller ? _shopNameController.text.trim() : null,
       shopDescription: isSeller ? _shopDescController.text.trim() : null,
     );

@@ -35,7 +35,7 @@ class AppConfig {
   static String get apiBaseUrl => _defaultBaseUrl;
 
   static const int connectTimeoutMs = 15000;
-  static const int receiveTimeoutMs = 15000;
+  static const int receiveTimeoutMs = 30000;
 
   static const String googleWebClientId =
       '984564758381-j3h58nipta62vt7eq32rk6dnqnqp5p2u.apps.googleusercontent.com';
